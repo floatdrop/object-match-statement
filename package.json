@@ -1,0 +1,23 @@
+{
+  "name": "object-match-statement",
+  "version": "0.0.0",
+  "description": "Builds string, that contains compare statement of two objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:floatdrop/object-match-statement.git"
+  },
+  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/floatdrop/object-match-statement/issues"
+  },
+  "homepage": "https://github.com/floatdrop/object-match-statement",
+  "devDependencies": {
+    "mocha": "^1.20.1",
+    "should": "^4.0.4"
+  }
+}
