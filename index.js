@@ -2,7 +2,7 @@ function escapeIdentifier (id) {
     if (/^[$A-Z\_a-z][$_0-9A-Za-z]*$/.test(id)) {
         return '.' + id;
     }
-    return '["' + id + '"]';
+    return '["' + id.replace(/"/g, '\\"') + '"]';
 }
 
 function buildCompareStatement (prefix, object) {

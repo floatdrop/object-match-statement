@@ -11,6 +11,10 @@ describe('escape', function () {
     it('should escape invalid identifiers', function() {
         Matcher.escape('-invalid').should.eql('["-invalid"]');
     });
+
+    it('should escape invalid identifiers with double quotes', function() {
+        Matcher.escape('"invalid').should.eql('["\\\"invalid"]');
+    });
 });
 
 describe('matcher', function () {
