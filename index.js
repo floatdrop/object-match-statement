@@ -14,8 +14,9 @@ function buildCompareStatement (prefix, object) {
             statement.push(nextPrefix);
             statement.push(buildCompareStatement(nextPrefix, object[key]));
         } else if (typeof object[key] === 'string') {
-            statement.push(nextPrefix + ' === "' + object[key] + '"');
+            statement.push(nextPrefix + ' === "' + object[key].replace(/"/g, '\\"') + '"');
         } else {
+            // This is strange situation, maybe it's Number. Who knows
             statement.push(nextPrefix + ' === ' + object[key]);
         }
     }

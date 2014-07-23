@@ -41,4 +41,10 @@ describe('matcher', function () {
         var func = new Function('object', 'return ' + matcher);
         func({a: {b: 1}, c: 1}).should.not.be.ok;
     });
+
+    it('should escape compared value of object', function() {
+        var matcher = Matcher.build('object', { a: '"wow'} );
+        var func = new Function('object', 'return ' + matcher);
+        func({a: '"wow'}).should.be.ok;
+    });
 });
