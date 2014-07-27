@@ -2,7 +2,7 @@ function escapeIdentifier (id) {
     if (/^[$A-Z\_a-z][$_0-9A-Za-z]*$/.test(id)) {
         return '.' + id;
     }
-    return '["' + id.replace(/"/g, '\\"') + '"]';
+    return '[' + JSON.stringify(id) + ']';
 }
 
 function buildCompareStatement (prefix, object) {
@@ -13,7 +13,7 @@ function buildCompareStatement (prefix, object) {
             statement.push(nextPrefix);
             statement.push(buildCompareStatement(nextPrefix, object[key]));
         } else if (typeof object[key] === 'string') {
-            statement.push(nextPrefix + ' === "' + object[key].replace(/"/g, '\\"') + '"');
+            statement.push(nextPrefix + ' === ' + JSON.stringify(object[key]));
         } else {
             // This is strange situation, maybe it's Number. Who knows
             statement.push(nextPrefix + ' === ' + object[key]);

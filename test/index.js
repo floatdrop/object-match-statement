@@ -17,11 +17,17 @@ describe('escape', function () {
     });
 
     it('should escape invalid identifiers with escaped double quotes', function() {
-        Matcher.escape('button\\"1').should.eql('["button\\\\"1"]');
+        Matcher.escape('button\\"1').should.eql('["button\\\\\\"1"]');
     });
 });
 
 describe('matcher', function () {
+    it('should escape matching value', function() {
+        var obj = {a: '\\"wow'};
+        var matcher = Matcher.compile(obj);
+        matcher(obj).should.be.ok;
+    });
+
     it('should return true on patter-match', function() {
         var matcher = Matcher.compile({a: 1});
         matcher({a: 1, c: 1}).should.be.ok;
