@@ -7,7 +7,6 @@ function escapeIdentifier (id) {
 
 function buildCompareStatement (prefix, object) {
     var statement = [];
-
     for (var key in object) {
         var nextPrefix = prefix + escapeIdentifier(key);
         if (typeof object[key] === 'object') {
@@ -24,9 +23,17 @@ function buildCompareStatement (prefix, object) {
     return statement.join(' && ');
 }
 
+function compileCompareStatement (pattern) {
+    var statement = buildCompareStatement('object', pattern);
+    var composedFunction = 'return ' + statement + ';';
+    /*jshint -W054*/ /* Yes, this is eval */
+    return new Function('object', composedFunction);
+}
+
 var Matcher = {
     escape: escapeIdentifier,
-    build: buildCompareStatement
+    build: buildCompareStatement,
+    compile: compileCompareStatement
 };
 
 module.exports = Matcher;

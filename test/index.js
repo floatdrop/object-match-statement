@@ -48,3 +48,23 @@ describe('matcher', function () {
         func({a: '"wow'}).should.be.ok;
     });
 });
+
+describe('compile', function () {
+    it('should compile function', function () {
+        var matcher = Matcher.compile({a: {b: 2}});
+        matcher.should.be.an.instanceOf(Function);
+    });
+
+    describe('returned function', function () {
+        it ('should return true on matching object', function () {
+            var matcher = Matcher.compile({a: {b: 2}});
+            matcher({a: {b: 2}, c: 1}).should.be.ok;
+        });
+
+        it ('should return false on mismatching object', function () {
+            var matcher = Matcher.compile({a: {b: 2}});
+            matcher({a: {b: 1}, c: 1}).should.not.be.ok;
+            matcher({a: 2}).should.not.be.ok;
+        });
+    });
+});

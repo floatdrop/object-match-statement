@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/floatdrop/object-match-statement",
   "devDependencies": {
+    "bh": "^2.2.0",
+    "enb": "^0.13.4",
+    "matcha": "^0.5.0",
     "mocha": "^1.20.1",
     "should": "^4.0.4"
   }
