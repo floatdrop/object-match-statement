@@ -1,6 +1,6 @@
 {
   "name": "object-match-statement",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Builds string, that contains compare statement of two objects",
   "main": "index.js",
   "scripts": {
